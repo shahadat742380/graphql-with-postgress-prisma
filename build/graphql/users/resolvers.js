@@ -34,5 +34,27 @@ const mutations = {
         });
         return true;
     }),
+    deleteUser(_1, _a) {
+        return __awaiter(this, arguments, void 0, function* (_, { id }) {
+            yield db_1.prismaClient.user.delete({
+                where: { id },
+            });
+            return true;
+        });
+    },
+    updateUser(_1, _a) {
+        return __awaiter(this, arguments, void 0, function* (_, { id, firstName, lastName, email, profileImageURL, }) {
+            const updatedUser = yield db_1.prismaClient.user.update({
+                where: { id },
+                data: {
+                    firstName,
+                    lastName,
+                    email,
+                    profileImageURL,
+                },
+            });
+            return updatedUser;
+        });
+    },
 };
 exports.resolvers = { queries, mutations };

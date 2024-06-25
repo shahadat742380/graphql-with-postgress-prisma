@@ -31,6 +31,41 @@ const mutations = {
 
     return true;
   },
+  async deleteUser(_: any, { id }: { id: string }) {
+    await prismaClient.user.delete({
+      where: { id },
+    });
+
+    return true;
+  },
+  async updateUser(
+    _: any,
+    {
+      id,
+      firstName,
+      lastName,
+      email,
+      profileImageURL,
+    }: {
+      id: string;
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      profileImageURL?: string;
+    }
+  ) {
+    const updatedUser = await prismaClient.user.update({
+      where: { id },
+      data: {
+        firstName,
+        lastName,
+        email,
+        profileImageURL,
+      },
+    });
+
+    return updatedUser;
+  },
 };
 
 export const resolvers = { queries, mutations };
