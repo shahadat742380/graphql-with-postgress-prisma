@@ -32,3 +32,4 @@ function init() {
 init().catch((error) => console.error("Error starting server:", error));
 // docker run cmd: docker compose up -d
 // docker stop cmd: docker compose stop
+// Prisma migration: npx prisma migrate dev --name any_name_here
