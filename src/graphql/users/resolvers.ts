@@ -7,6 +7,12 @@ const queries = {
     });
     return users;
   },
+  async getUserById(_: any, { id }: { id: string }) {
+    const user = await prismaClient.user.findUnique({
+      where: { id },
+    });
+    return user;
+  },
 };
 
 const mutations = {

@@ -20,6 +20,14 @@ const queries = {
             return users;
         });
     },
+    getUserById(_1, _a) {
+        return __awaiter(this, arguments, void 0, function* (_, { id }) {
+            const user = yield db_1.prismaClient.user.findUnique({
+                where: { id },
+            });
+            return user;
+        });
+    },
 };
 const mutations = {
     createUser: (_1, _a) => __awaiter(void 0, [_1, _a], void 0, function* (_, { firstName, lastName, email, password, }) {
